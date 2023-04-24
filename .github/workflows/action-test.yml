@@ -1,0 +1,25 @@
+name: Test github-action-copy-files
+
+on:
+  ['push']
+
+jobs:
+  action-test:
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+    runs-on: ${{ matrix.os }}
+    name: Copy test files
+    steps:
+    - uses: actions/checkout@master
+      name: Checkout
+    - uses: ./
+      name: Copy files
+      with:
+        source: './tests/**'
+        destination: './destination'
+        options: |
+            {
+              "overwrite": true,
+              "flat": true
+            }

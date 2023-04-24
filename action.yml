@@ -1,0 +1,17 @@
+name: github-action-copy-files
+description: 'Copy files using glob strings with cpy'
+
+inputs:
+  source:
+    description: 'Comma-separated list of glob strings for source files'
+    required: true
+  destination:
+    description: 'Destination directory'
+    required: true
+  options:
+    description: 'Options to be forwarded to cpy'
+    required: false
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
