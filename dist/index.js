@@ -4201,7 +4201,7 @@ exports["default"] = ProviderAsync;
 
 /***/ }),
 
-/***/ 8283:
+/***/ 421:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 
@@ -4471,7 +4471,7 @@ exports["default"] = PartialMatcher;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const path = __nccwpck_require__(1017);
-const deep_1 = __nccwpck_require__(8283);
+const deep_1 = __nccwpck_require__(421);
 const entry_1 = __nccwpck_require__(3295);
 const error_1 = __nccwpck_require__(2388);
 const entry_2 = __nccwpck_require__(3452);
@@ -15198,36 +15198,26 @@ function cpy(
 	return promise;
 }
 
-;// CONCATENATED MODULE: ./src/main.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
+;// CONCATENATED MODULE: ./src/main.js
 
 
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const sourceGlobs = core.getInput("source").split(",");
-        const destination = core.getInput("destination");
-        const options = JSON.parse(core.getInput("options") || "{}");
-        try {
-            yield cpy(sourceGlobs, destination, options);
-        }
-        catch (error) {
-            if (error instanceof Error) {
-                core.setFailed(error.message);
-            }
-            else {
-                core.setFailed(`Error while copying files: ${error}`);
-            }
-        }
-    });
+
+async function run() {
+  const sourceGlobs = core.getInput("source").split(",");
+  const destination = core.getInput("destination");
+  const options = JSON.parse(core.getInput("options") || "{}");
+
+  try {
+    await cpy(sourceGlobs, destination, options);
+  } catch (error) {
+    if (error instanceof Error) {
+      core.setFailed(error.message);
+    } else {
+      core.setFailed(`Error while copying files: ${error}`);
+    }
+  }
 }
+
 run();
 
 })();
