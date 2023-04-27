@@ -1,7 +1,10 @@
 name: Test github-action-copy-files
 
 on:
-  ['push']
+  push:
+   branches:
+    - master
+  pull_request:
 
 jobs:
   action-test:
