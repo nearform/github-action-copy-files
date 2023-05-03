@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "cpy": "^9.0.1"
+    "cpy": "^10.0.0"
   }
 }
